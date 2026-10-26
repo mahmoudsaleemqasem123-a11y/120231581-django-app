@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>الصفحة الرئيسية للطالب</title>
+    <style>
+        body { font-family: Tahoma, sans-serif; background-color: #f4f4f9; padding: 20px; text-align: center; }
+        .card { background: white; max-width: 500px; margin: 0 auto; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); }
+        img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid #007bff; }
+        h2 { color: #333; }
+        p { font-size: 16px; color: #555; text-align: right; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+        span { font-weight: bold; color: #007bff; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        {% if student %}
+            {% if student.photo %}
+                <img src="{{ student.photo.url }}" alt="صورة الطالب">
+            {% endif %}
+            <h2>{{ student.full_name }}</h2>
+            <p><span>رقم الهوية الجامعية:</span> {{ student.university_id }}</p>
+            <p><span>العمر:</span> {{ student.age }} سنوات</p>
+            <p><span>تاريخ الميلاد:</span> {{ student.date_of_birth }}</p>
+            <p><span>العنوان:</span> {{ student.address }}</p>
+            <p><span>الراتب:</span> {{ student.salary }} $</p>
+        {% else %}
+            <p>لا توجد بيانات متاحة حالياً. يجدر بك إضافتها من لوحة التحكم.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
